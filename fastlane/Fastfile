@@ -222,6 +222,7 @@ platform :ios do
     end
 
     build_app(
+      xcodebuild_formatter: '',
       workspace: use_workspace ? ENV['WORKSPACE_PATH'] : nil,
       project: !use_workspace ? ENV['PROJECT_PATH'] : nil,
       configuration: ENV['CONFIGURATION'],
