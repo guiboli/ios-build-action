@@ -132,6 +132,10 @@ inputs:
     description: 'Custom XCode Path'
     required: false
     default: ""
+  xcodebuild-formatter:
+    description: 'Custom xcodebuild formatter (e.g., xcbeautify, xcpretty)'
+    required: false
+    default: ""
 runs:
   using: "node20"
   main: "dist/index.js"
