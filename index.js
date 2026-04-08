@@ -73,6 +73,10 @@ async function run() {
       process.env.DEVELOPER_DIR = xcodePath;
     }
 
+    var xcodebuildFormatter = core.getInput('xcodebuild-formatter');
+    if (xcodebuildFormatter) {
+      process.env.XCODEBUILD_FORMATTER = xcodebuildFormatter;
+    }
     if(!core.getBooleanInput('resign')) {
       // Execute build.sh
       await exec.exec(`bash ${__dirname}/../build.sh`);
