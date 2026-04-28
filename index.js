@@ -77,6 +77,10 @@ async function run() {
     if (xcodebuildFormatter) {
       process.env.XCODEBUILD_FORMATTER = xcodebuildFormatter;
     }
+    var xcodebuildXcargs = core.getInput('xcodebuild-xcargs');
+    if (xcodebuildXcargs) {
+      process.env.XCODEBUILD_XCARGS = xcodebuildXcargs;
+    }
     if(!core.getBooleanInput('resign')) {
       // Execute build.sh
       await exec.exec(`bash ${__dirname}/../build.sh`);

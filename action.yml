@@ -136,6 +136,10 @@ inputs:
     description: 'Custom xcodebuild formatter (e.g., xcbeautify, xcpretty)'
     required: false
     default: ""
+  xcodebuild-xcargs:
+    description: 'Custom xcargs for xcodebuild'
+    required: false
+    default: ""
 runs:
   using: "node20"
   main: "dist/index.js"
