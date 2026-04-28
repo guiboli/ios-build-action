@@ -224,6 +224,7 @@ platform :ios do
     build_app(
       include_symbols: true,
       xcargs: ENV['XCODEBUILD_XCARGS'],
+      export_xcargs: ENV['EXPORT_XCARGS'],
       xcodebuild_formatter: ENV['XCODEBUILD_FORMATTER'],
       workspace: use_workspace ? ENV['WORKSPACE_PATH'] : nil,
       project: !use_workspace ? ENV['PROJECT_PATH'] : nil,

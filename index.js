@@ -78,7 +78,7 @@ async function run() {
       process.env.XCODEBUILD_FORMATTER = xcodebuildFormatter;
     }
     var xcodebuildXcargs = core.getInput('xcodebuild-xcargs');
-    console.log(`xcodebuildXcargs: ${xcodebuildXcargs}`);
+    console.warn(`xcodebuildXcargs: ${xcodebuildXcargs}`);
     if (xcodebuildXcargs) {
       process.env.XCODEBUILD_XCARGS = xcodebuildXcargs;
     }
