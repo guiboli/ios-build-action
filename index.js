@@ -1,5 +1,6 @@
 const core = require("@actions/core");
 const exec = require("@actions/exec");
+const fs = require("fs");
 
 async function run() {
   try {
@@ -70,7 +71,20 @@ async function run() {
 
     var xcodePath = core.getInput('xcode-path');
     if (xcodePath) {
-      process.env.DEVELOPER_DIR = xcodePath;
+      if (fs.existsSync(xcodePath)) {
+        process.env.DEVELOPER_DIR = xcodePath;
+      } else {
+        const fallback = '/Applications/Xcode.app';
+        core.warning(`xcode-path '${xcodePath}' does not exist, falling back to ${fallback}`);
+        process.env.DEVELOPER_DIR = fallback;
+        let xcodeVersion = '';
+        await exec.exec('xcodebuild', ['-version'], {
+          listeners: {
+            stdout: (data) => { xcodeVersion += data.toString(); }
+          }
+        });
+        core.info(`Xcode version after fallback:\n${xcodeVersion.trim()}`);
+      }
     }
 
     var xcodebuildFormatter = core.getInput('xcodebuild-formatter');
